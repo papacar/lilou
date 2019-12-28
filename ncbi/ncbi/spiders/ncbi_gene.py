@@ -1,9 +1,21 @@
+# -*- coding: utf-8 -*-
+import scrapy
+
+from ncbi.items import NcbiItem
 import re
 import requests
 from bs4 import BeautifulSoup
 
+class NcbiGeneSpider(scrapy.Spider):
+    name = 'ncbi_gene'
+    allowed_domains = ['ncbi.nlm.nih.gov']
+    start_urls = ['https://www.ncbi.nlm.nih.gov/gene/?term=s30']
 
-base_urls = ['https://www.ncbi.nlm.nih.gov/gene/?term=']
+    def parse(self, response):
+        filename = response.url.split('/')[-2]
+        with open(filename, 'wb') as fp:
+
+            fp.write(response.body)
 
 
 def touch_page(url):
