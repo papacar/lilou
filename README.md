@@ -9,6 +9,7 @@
 - numpy
 - scrapy:
   - [文档资料](https://scrapy-chs.readthedocs.io/)
+- fake-useragent
 
 ## NCBI 数据采集
 
