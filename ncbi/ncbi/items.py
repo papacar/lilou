@@ -11,6 +11,7 @@ import scrapy
 class NcbiItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    name = scrapy.Field()
-    link = scrapy.Field()
+    gene_name = scrapy.Field()
+    gene_link = scrapy.Field()
+    gene_id = scrapy.Field()
     desc = scrapy.Field()

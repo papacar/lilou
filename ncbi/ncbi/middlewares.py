@@ -7,6 +7,8 @@
 
 from scrapy import signals
 from fake_useragent import UserAgent
+from ncbi.settings import USER_AGENT_LIST
+import random
 
 
 class NcbiSpiderMiddleware(object):
@@ -105,14 +107,5 @@ class NcbiDownloaderMiddleware(object):
 
 
 class RandomUserAgentMiddleware(object):
-    #随机更换 user-agent
-    def __init__(self,crawler):
-        super(RandomUserAgentMiddleware,self).__init__()
-        self.ua = UserAgent()
-
-    @classmethod
-    def from_crawler(cls,crawler):
-        return cls(crawler)
-
-    def process_request(self,request,spider):
-        request.headers.setdefault("User-Agent",self.ua.random)
+    def process_request(self, request, spider):
+    	request.headers.setdefault('User-Agent', random.choice(USER_AGENT_LIST))
